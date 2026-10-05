@@ -243,3 +243,7 @@ node_modules/
 
 # Git
 .git/
+
+# Evidence packs created by running workshop notebooks locally
+evidence_pack/
+evidence_pack.zip

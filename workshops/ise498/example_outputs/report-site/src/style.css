@@ -1,0 +1,496 @@
+/* Screen styles for the report. Print rules are in print.css. */
+
+:root {
+  color-scheme: light;
+  --paper: #fcfcfb; /* same off-white as the chart backgrounds */
+  --ink: #18212c;
+  --muted: #59636f;
+  --rule: #dcdcd4;
+  --rule-strong: #b8b9af;
+  --signal: #2a78d6; /* the highlight blue used in the charts */
+  --link: #1d5fb0;
+  --so-what-bg: #eef4fc;
+  --plate: #fcfcfb;
+  --plate-edge: #e2e2da;
+  --plate-caption: #59636f;
+
+  --font-display: 'Barlow Condensed', 'Arial Narrow', 'Roboto Condensed', sans-serif;
+  --font-body: 'Source Serif 4 Variable', 'Source Serif 4', Charter, Georgia, serif;
+
+  --measure: 38rem; /* about 70 characters of body text */
+  --wide: 56rem;
+  --rail: 15rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --paper: #10161e;
+    --ink: #e6e9ed;
+    --muted: #9aa4b0;
+    --rule: #25303c;
+    --rule-strong: #3b4654;
+    --signal: #5b9ceb;
+    --link: #8dbdf6;
+    --so-what-bg: #142338;
+    --plate-edge: #2d3846;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #10161e;
+  --ink: #e6e9ed;
+  --muted: #9aa4b0;
+  --rule: #25303c;
+  --rule-strong: #3b4654;
+  --signal: #5b9ceb;
+  --link: #8dbdf6;
+  --so-what-bg: #142338;
+  --plate-edge: #2d3846;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 1.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.18em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 10;
+  padding: 0.5rem 0.8rem;
+  background: var(--ink);
+  color: var(--paper);
+  font: 600 1rem/1.2 var(--font-display);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Layout: contents rail beside the reading column */
+
+.layout {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  max-width: 84rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+}
+
+.rail {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 3rem 1.5rem 2rem 0;
+  border-right: 1px solid var(--rule);
+}
+
+.toc summary {
+  font: 600 1.125rem/1.2 var(--font-display);
+  color: var(--muted);
+  list-style: none;
+}
+
+.toc summary::-webkit-details-marker {
+  display: none;
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+}
+
+.toc ol ol {
+  margin: 0.15rem 0 0.35rem 0.85rem;
+}
+
+.toc a {
+  display: block;
+  padding: 0.3rem 0 0.3rem 0.75rem;
+  border-left: 2px solid transparent;
+  color: var(--muted);
+  font: 500 1.0625rem/1.25 var(--font-display);
+  text-decoration: none;
+}
+
+.toc ol ol a {
+  font-size: 1rem;
+}
+
+.toc a:hover {
+  color: var(--ink);
+}
+
+.toc a[aria-current='true'] {
+  border-left-color: var(--signal);
+  color: var(--ink);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.controls button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ink);
+  font: 500 1.0625rem/1.2 var(--font-display);
+  text-align: left;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  border-color: var(--ink);
+}
+
+.switch {
+  position: relative;
+  flex: none;
+  width: 2.1rem;
+  height: 1.15rem;
+  border-radius: 999px;
+  background: var(--rule-strong);
+  transition: background-color 0.2s;
+}
+
+.switch::after {
+  content: '';
+  position: absolute;
+  top: 0.15rem;
+  left: 0.15rem;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--paper);
+  transition: transform 0.2s;
+}
+
+[aria-pressed='true'] .switch {
+  background: var(--signal);
+}
+
+[aria-pressed='true'] .switch::after {
+  transform: translateX(0.95rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switch,
+  .switch::after {
+    transition: none;
+  }
+}
+
+/* The report */
+
+.report {
+  min-width: 0;
+  padding: 3rem 0 6rem;
+  overflow-wrap: break-word;
+}
+
+.report:focus {
+  outline: none;
+}
+
+.report > * {
+  max-width: var(--measure);
+}
+
+.report > .report-header,
+.report > .plate,
+.report > .table-wrap {
+  max-width: var(--wide);
+}
+
+.report-header {
+  margin-bottom: 3.5rem;
+}
+
+.report h1 {
+  max-width: 21ch;
+  margin: 0 0 1.75rem;
+  font: 600 clamp(2.5rem, 5.5vw, 3.75rem) / 1.02 var(--font-display);
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+/* Title block, after the one on an engineering drawing */
+.title-block {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+  margin: 0;
+  border: 1.5px solid var(--ink);
+}
+
+.title-block > div {
+  padding: 0.6rem 0.9rem 0.75rem;
+}
+
+.title-block > div + div {
+  border-left: 1px solid var(--rule-strong);
+}
+
+.title-block dt {
+  color: var(--muted);
+  font: 500 1rem/1.2 var(--font-display);
+}
+
+.title-block dd {
+  margin: 0.15rem 0 0;
+  font-size: 1rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere; /* long file names */
+}
+
+.report h2 {
+  margin: 4.5rem 0 1.25rem;
+  padding-top: 1rem;
+  border-top: 1.5px solid var(--ink);
+  font: 600 2.25rem/1.1 var(--font-display);
+}
+
+.report-header + h2 {
+  margin-top: 0;
+}
+
+.report h3 {
+  margin: 3rem 0 0.75rem;
+  font: 600 1.5rem/1.2 var(--font-display);
+}
+
+.report h2 + h3 {
+  margin-top: 1.5rem;
+}
+
+.report p {
+  margin: 0 0 1rem;
+}
+
+.report ul {
+  margin: 0 0 1.25rem;
+  padding-left: 1.2rem;
+}
+
+.report li {
+  margin: 0.4rem 0;
+  padding-left: 0.2rem;
+}
+
+.report li::marker {
+  color: var(--muted);
+}
+
+.report strong {
+  font-weight: 650;
+}
+
+/* Plain-language explanations of each statistic */
+.report em {
+  color: var(--muted);
+}
+
+/* Executive summary: each bullet opens with its own headline */
+.report ul.summary {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.report ul.summary li {
+  margin: 0;
+  padding: 1rem 0 1.1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.report ul.summary li > strong:first-child {
+  display: block;
+  margin-bottom: 0.2rem;
+  font: 600 1.3125rem/1.2 var(--font-display);
+}
+
+/* Charts keep their own off-white paper, in both themes */
+.report figure.plate {
+  margin: 2rem 0 0;
+  padding: clamp(0.5rem, 1.5vw, 1rem);
+  border: 1px solid var(--plate-edge);
+  border-radius: 6px;
+  background: var(--plate);
+}
+
+.plate img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.plate figcaption {
+  margin-top: 0.6rem;
+  padding: 0 0.25rem;
+  color: var(--plate-caption);
+  font: 500 1rem/1.3 var(--font-display);
+}
+
+/* "So what" lines: the one place the accent is spent */
+.report p.so-what {
+  margin: 1.25rem 0 0;
+  padding: 0.85rem 1.1rem;
+  border-left: 4px solid var(--signal);
+  background: var(--so-what-bg);
+  font-size: 1.1875rem;
+  line-height: 1.5;
+}
+
+.report p.so-what > strong:first-child {
+  margin-right: 0.25rem;
+  font: 600 1.1875rem/1 var(--font-display);
+}
+
+/* Recommendations table */
+.table-wrap {
+  margin: 1.25rem 0 0;
+  overflow-x: auto;
+  border-top: 1.5px solid var(--ink);
+}
+
+.report table {
+  width: 100%;
+  min-width: 46rem;
+  border-collapse: collapse;
+  font-size: 1rem;
+  line-height: 1.45;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.report th {
+  padding: 0.7rem 0.9rem 0.6rem 0;
+  border-bottom: 1px solid var(--rule-strong);
+  font: 600 1.0625rem/1.2 var(--font-display);
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.report td {
+  padding: 0.75rem 0.9rem 0.8rem 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+.report td:first-child {
+  font-weight: 600;
+}
+
+/* Narrow screens: contents fold into a disclosure above the report */
+@media (max-width: 60rem) {
+  body {
+    font-size: 1.0625rem;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .rail {
+    position: static;
+    height: auto;
+    overflow: visible;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .toc summary {
+    cursor: pointer;
+    color: var(--ink);
+  }
+
+  .toc summary::after {
+    content: ' +';
+    color: var(--muted);
+  }
+
+  .toc[open] summary::after {
+    content: ' \2212';
+  }
+
+  .controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .report {
+    padding-top: 2rem;
+  }
+
+  .report h2 {
+    margin-top: 3.25rem;
+    font-size: 1.875rem;
+  }
+
+  .report h3 {
+    font-size: 1.375rem;
+  }
+
+  .title-block {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .title-block > div + div {
+    border-left: 0;
+    border-top: 1px solid var(--rule-strong);
+  }
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Engine Plant Operations Report</title>
+    <script>
+      // Apply a saved light/dark choice before the page paints.
+      try {
+        const saved = localStorage.getItem('report-theme');
+        if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#report">Skip to the report</a>
+    <div class="layout">
+      <aside class="rail">
+        <details class="toc" open>
+          <summary>Contents</summary>
+          <nav aria-label="Table of contents">
+            <ol id="toc-list"></ol>
+          </nav>
+        </details>
+        <div class="controls">
+          <button type="button" id="theme-toggle" aria-pressed="false">
+            <span>Dark mode</span><span class="switch" aria-hidden="true"></span>
+          </button>
+          <button type="button" id="print-button">Print or save as PDF</button>
+        </div>
+      </aside>
+      <main id="report" class="report" tabindex="-1">
+        <noscript>This report needs JavaScript. Open report.md or report.pdf instead.</noscript>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

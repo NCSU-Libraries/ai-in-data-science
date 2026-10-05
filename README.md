@@ -42,6 +42,14 @@ workshops/
 - **Filled Notebook**: [workshops/engine_production/engine_production_data_filled.ipynb](workshops/engine_production/engine_production_data_filled.ipynb)
 - **Facilitation Guide**: [workshops/engine_production/story_map_one_page.md](workshops/engine_production/story_map_one_page.md)
 
+### ISE498: AI-Assisted Analysis and Reporting
+- **Workshop Folder**: [workshops/ise498/](workshops/ise498/)
+- **Workshop README**: [workshops/ise498/README.md](workshops/ise498/README.md)
+- **Template Notebook**: [workshops/ise498/engine_production_gemini.ipynb](workshops/ise498/engine_production_gemini.ipynb)
+- **Filled Notebook**: [workshops/ise498/engine_production_gemini_filled.ipynb](workshops/ise498/engine_production_gemini_filled.ipynb)
+- **Report Guide (Part 2)**: [workshops/ise498/report_with_claude.md](workshops/ise498/report_with_claude.md)
+- **Facilitation Guide**: [workshops/ise498/facilitator_guide.md](workshops/ise498/facilitator_guide.md)
+
 ## Adding a New Workshop
 
 1. Create a new folder in `workshops/<new_workshop_slug>/`

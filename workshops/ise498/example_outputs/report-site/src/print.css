@@ -1,0 +1,158 @@
+/* Print stylesheet: US Letter, light colors, no navigation, page numbers in the footer. */
+
+@page {
+  size: letter;
+  margin: 0.75in 0.8in 0.8in;
+
+  @bottom-left {
+    content: 'Engine Plant Operations Report';
+    color: #666;
+    font: 500 8.5pt 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  }
+
+  @bottom-right {
+    content: 'Page ' counter(page) ' of ' counter(pages);
+    color: #666;
+    font: 500 8.5pt 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  }
+}
+
+@media print {
+  /* Always print the light palette, whatever the screen theme */
+  :root,
+  :root:not([data-theme='light']),
+  :root[data-theme='dark'] {
+    color-scheme: light;
+    --paper: #fff;
+    --ink: #111;
+    --muted: #555;
+    --rule: #d6d6d6;
+    --rule-strong: #aaa;
+    --signal: #2a78d6;
+    --link: #111;
+    --so-what-bg: #eef4fc;
+    --plate: #fcfcfb;
+    --plate-edge: #fff;
+  }
+
+  html {
+    font-size: 9.5pt;
+  }
+
+  body {
+    background: #fff;
+    font-size: 10.5pt;
+    line-height: 1.4;
+  }
+
+  .skip-link,
+  .rail {
+    display: none !important;
+  }
+
+  .layout {
+    display: block;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .report {
+    padding: 0;
+  }
+
+  .report > *,
+  .report > .plate,
+  .report > .table-wrap {
+    max-width: none;
+  }
+
+  .report-header {
+    margin-bottom: 12pt;
+  }
+
+  .report h1 {
+    max-width: none;
+    margin-bottom: 10pt;
+    font-size: 24pt;
+  }
+
+  /* The page is narrower than the screen breakpoint; keep the title block side by side */
+  .title-block {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+  }
+
+  .title-block > div + div {
+    border-top: 0;
+    border-left: 1px solid var(--rule-strong);
+  }
+
+  .report h2 {
+    margin: 13pt 0 5pt;
+    padding-top: 5pt;
+    font-size: 16pt;
+    break-after: avoid;
+  }
+
+  .report h3 {
+    margin: 12pt 0 4pt;
+    font-size: 12.5pt;
+    break-after: avoid;
+  }
+
+  .report ul.summary li {
+    padding: 5pt 0 6pt;
+  }
+
+  .report ul.summary li > strong:first-child {
+    font-size: 12pt;
+  }
+
+  .report figure.plate {
+    width: 72%;
+    margin: 8pt auto 0;
+    padding: 0;
+    border: 0;
+    break-inside: avoid;
+  }
+
+  .plate figcaption {
+    font-size: 9pt;
+    text-align: center;
+  }
+
+  .report p.so-what {
+    margin-top: 8pt;
+    padding: 5pt 8pt;
+    font-size: 10.5pt;
+    break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .report p.so-what > strong:first-child {
+    font-size: 11pt;
+  }
+
+  .table-wrap {
+    overflow: visible;
+  }
+
+  .report table {
+    min-width: 0;
+    font-size: 8.5pt;
+  }
+
+  .report th {
+    font-size: 9.5pt;
+  }
+
+  .report tr {
+    break-inside: avoid;
+  }
+
+  .report a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

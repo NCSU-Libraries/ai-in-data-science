@@ -1,0 +1,78 @@
+/* Print stylesheet for report.pdf (US Letter). Used by pdf/build_pdf.sh. */
+@page {
+  size: letter;
+  margin: 0.75in 0.8in 0.8in;
+  @bottom-left {
+    content: "Engine Plant Operations Report";
+    font: 8pt "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #777;
+  }
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font: 8pt "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #777;
+  }
+}
+
+html { font-size: 10pt; }
+body {
+  font-family: Charter, "Bitstream Charter", "Iowan Old Style", Georgia, serif;
+  line-height: 1.45;
+  color: #1d1d1f;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+h1, h2, h3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #111;
+  line-height: 1.2;
+  break-after: avoid;
+}
+h1 { font-size: 19pt; margin: 0 0 5pt; letter-spacing: -0.01em; }
+h1 + p {
+  color: #555;
+  font-size: 9.5pt;
+  margin: 0 0 12pt;
+  padding-bottom: 9pt;
+  border-bottom: 1.5pt solid #2a78d6;
+}
+h2 { font-size: 13pt; margin: 14pt 0 5pt; padding-bottom: 3pt; border-bottom: 0.5pt solid #ccc; }
+h3 { font-size: 11pt; margin: 12pt 0 4pt; }
+
+p { margin: 4pt 0 6pt; }
+p, li { orphans: 3; widows: 3; }
+ul { padding-left: 1.2em; margin: 3pt 0 6pt; }
+li { margin: 2pt 0; }
+strong { color: #000; }
+
+/* Charts: one per finding, kept whole on a page */
+figure { margin: 6pt 0 4pt; break-inside: avoid; text-align: center; }
+figure img { width: 76%; height: auto; }
+figcaption { font-size: 8.5pt; color: #666; font-style: italic; margin-top: 2pt; }
+
+/* The "So what" line follows each chart */
+figure + p {
+  border-left: 3pt solid #2a78d6;
+  background: #f2f6fc;
+  padding: 5pt 8pt;
+  margin: 6pt 0 8pt;
+  break-inside: avoid;
+}
+
+/* Recommendations table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8.5pt;
+  line-height: 1.3;
+  margin: 6pt 0 8pt;
+}
+th, td { border: 0.5pt solid #c8c8c8; padding: 4pt 5pt; vertical-align: top; text-align: left; }
+th { background: #eef2f7; font-weight: 600; }
+tr { break-inside: avoid; }
