@@ -19,7 +19,7 @@
 ## 📓 Notebooks Available
 
 ### 🎓 Educational Template (Recommended for Learning)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NCSU-Libraries/ai_in_data_science/blob/main/workshops/er_wait_time/er_wait_time_data.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NCSU-Libraries/ai-in-data-science/blob/main/workshops/er_wait_time/er_wait_time_data.ipynb)
 
 **`er_wait_time_data.ipynb`** - Interactive learning template with:
 - Step-by-step instructions
@@ -28,7 +28,7 @@
 - Placeholder cells for student work
 
 ### 📊 Completed Analysis (Reference)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NCSU-Libraries/ai_in_data_science/blob/main/workshops/er_wait_time/er_wait_time_data_filled.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NCSU-Libraries/ai-in-data-science/blob/main/workshops/er_wait_time/er_wait_time_data_filled.ipynb)
 
 **`er_wait_time_data_filled.ipynb`** - Complete analysis with:
 - All code executed with results
@@ -48,8 +48,8 @@ Click the "Open In Colab" badge above to run the notebook directly in your brows
 ### Option 2: Local Setup
 1. Clone this repository:
    ```bash
-   git clone https://github.com/NCSU-Libraries/ai_in_data_science.git
-   cd ai_in_data_science
+   git clone https://github.com/NCSU-Libraries/ai-in-data-science.git
+   cd ai-in-data-science
    ```
 
 2. Install required packages:

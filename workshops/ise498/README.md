@@ -39,7 +39,7 @@ notebook cell packages the results, and Claude writes from that package.
 
 ### Part 1: Analyze with Gemini in Colab
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NCSU-Libraries/ai_in_data_science/blob/main/workshops/ise498/engine_production_gemini.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NCSU-Libraries/ai-in-data-science/blob/main/workshops/ise498/engine_production_gemini.ipynb)
 
 **`engine_production_gemini.ipynb`**: the participant notebook, with:
 - Ready-to-paste prompts for Gemini at every step
@@ -47,7 +47,7 @@ notebook cell packages the results, and Claude writes from that package.
 - A catch-up cell, so nobody falls behind
 - A one-click evidence-pack builder (`findings.md` + three report-ready charts)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NCSU-Libraries/ai_in_data_science/blob/main/workshops/ise498/engine_production_gemini_filled.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NCSU-Libraries/ai-in-data-science/blob/main/workshops/ise498/engine_production_gemini_filled.ipynb)
 
 **`engine_production_gemini_filled.ipynb`**: the reference version, with every cell filled in and run.
 
@@ -103,8 +103,8 @@ Click the first "Open In Colab" badge above, then choose **File → Save a copy 
 ### Option 2: Local Setup
 1. Clone this repository:
 	```bash
-	git clone https://github.com/NCSU-Libraries/ai_in_data_science.git
-	cd ai_in_data_science
+	git clone https://github.com/NCSU-Libraries/ai-in-data-science.git
+	cd ai-in-data-science
 	```
 
 2. Install required packages:
